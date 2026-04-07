@@ -1,0 +1,11 @@
+{
+  "name": "portfolio-unified",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build --prefix client",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.6"
+  }
+}
