@@ -1,14 +1,24 @@
+const express = require('express');
+const cors = require('cors');
 const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
 
-// Set API Key from environment
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Set SendGrid API Key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-module.exports = async (req, res) => {
-    // Only allow POST requests
-    if (req.method !== 'POST') {
-        return res.status(405).json({ success: false, message: 'Method Not Allowed' });
-    }
+// Routes
+app.get('/', (req, res) => {
+    res.send('Portfolio Backend is running...');
+});
 
+app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
 
     console.log(`[API] Received submission from: ${name} <${email}>`);
@@ -18,11 +28,10 @@ module.exports = async (req, res) => {
         return res.status(400).json({ success: false, message: "All fields are required." });
     }
 
-    // Email Transmission using SendGrid
     try {
         const msg = {
-            to: process.env.RECEIVER_EMAIL || process.env.FROM_EMAIL, // Destination email
-            from: process.env.FROM_EMAIL, // Verified SendGrid sender
+            to: process.env.RECEIVER_EMAIL || process.env.FROM_EMAIL,
+            from: process.env.FROM_EMAIL,
             replyTo: email,
             subject: `New Portfolio Contact from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
@@ -35,9 +44,6 @@ module.exports = async (req, res) => {
                     <div style="background: #f7fafc; padding: 20px; border-radius: 8px; border-left: 5px solid #7c3aed; font-style: italic; line-height: 1.6;">
                         ${message.replace(/\n/g, '<br/>')}
                     </div>
-                    <footer style="margin-top: 30px; font-size: 12px; color: #a0aec0; text-align: center;">
-                        This email was sent from your portfolio contact form.
-                    </footer>
                 </div>
             `,
         };
@@ -59,4 +65,9 @@ module.exports = async (req, res) => {
             message: "An error occurred while sending your message. Please try again later.",
         });
     }
-};
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
