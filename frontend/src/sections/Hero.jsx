@@ -52,7 +52,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="min-h-[calc(100vh-6rem)] w-full flex items-center justify-center">
+        <section id="home" className="min-h-[calc(100vh-6rem)] w-full flex items-center justify-center">
             <div className="layout-container grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
                 {/* Left Content Column */}
@@ -84,7 +84,7 @@ const Hero = () => {
                                             key={charIndex}
                                             variants={letterVariants}
                                             className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent inline-block"
-                                            style={{ display: "inline-block" }}
+                                            style={{ display: "inline-block", willChange: "transform, opacity" }}
                                         >
                                             {char}
                                         </motion.span>

@@ -104,7 +104,7 @@ const Contact = () => {
     ];
 
     return (
-        <section className="layout-container py-24 min-h-screen flex flex-col justify-center">
+        <section id="contact" className="layout-container py-24 min-h-screen flex flex-col justify-center">
             <SectionHeader 
                 title="Get in Touch" 
                 subtitle="I’m available for freelance projects or full-time opportunities. Let’s talk!"

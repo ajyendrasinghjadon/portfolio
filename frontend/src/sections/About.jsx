@@ -32,7 +32,7 @@ const About = () => {
     };
 
     return (
-        <section className="layout-container py-24 min-h-screen flex flex-col justify-center">
+        <section id="about" className="layout-container py-24 min-h-screen flex flex-col justify-center">
             <SectionHeader title="About Me" />
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

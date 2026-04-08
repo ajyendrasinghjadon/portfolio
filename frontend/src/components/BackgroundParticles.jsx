@@ -15,7 +15,8 @@ const BackgroundParticles = () => {
                     repeat: Infinity,
                     ease: "linear"
                 }}
-                className="absolute top-[10%] left-[20%] w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] bg-primary/10 rounded-full blur-[100px]"
+                className="absolute top-[10%] left-[20%] w-[30vw] h-[30vw] min-w-[300px] min-h-[300px] bg-primary/10 rounded-full blur-[60px] md:blur-[100px]"
+                style={{ willChange: "transform" }}
             />
 
             {/* Accent Glow Orb */}
@@ -30,7 +31,8 @@ const BackgroundParticles = () => {
                     repeat: Infinity,
                     ease: "linear"
                 }}
-                className="absolute top-[40%] right-[10%] w-[25vw] h-[25vw] min-w-[250px] min-h-[250px] bg-accent/10 rounded-full blur-[100px]"
+                className="absolute top-[40%] right-[10%] w-[25vw] h-[25vw] min-w-[250px] min-h-[250px] bg-accent/10 rounded-full blur-[60px] md:blur-[100px]"
+                style={{ willChange: "transform" }}
             />
 
             {/* Secondary Glow Orb */}
@@ -45,7 +47,8 @@ const BackgroundParticles = () => {
                     repeat: Infinity,
                     ease: "linear"
                 }}
-                className="absolute bottom-[10%] left-[30%] w-[20vw] h-[20vw] min-w-[200px] min-h-[200px] bg-secondary/10 rounded-full blur-[100px]"
+                className="absolute bottom-[10%] left-[30%] w-[20vw] h-[20vw] min-w-[200px] min-h-[200px] bg-secondary/10 rounded-full blur-[60px] md:blur-[100px]"
+                style={{ willChange: "transform" }}
             />
         </div>
     );

@@ -86,7 +86,7 @@ const Projects = () => {
     };
 
     return (
-        <section className="layout-container py-24 min-h-screen">
+        <section id="projects" className="layout-container py-24 min-h-screen">
             <SectionHeader 
                 title="Selected Projects" 
                 subtitle="Here is a showcase of my recent work focusing on scalable architecture, clean design, and smooth user experiences."
@@ -104,7 +104,12 @@ const Projects = () => {
                     <motion.div
                         key={project.id}
                         variants={cardVariants}
-                        className="group block rounded-2xl bg-glass border border-glass/50 overflow-hidden hover:border-primary/40 transition-all duration-500 backdrop-blur-md hover:shadow-[0_15px_30px_-5px_rgba(124,58,237,0.3)] relative flex flex-col h-full"
+                        onClick={() => {
+                            if (window.innerWidth < 768 && project.demoLink !== "#") {
+                                window.open(project.demoLink, "_blank", "noopener,noreferrer");
+                            }
+                        }}
+                        className="group block rounded-2xl bg-glass border border-glass/50 overflow-hidden hover:border-primary/40 transition-all duration-500 backdrop-blur-md hover:shadow-[0_15px_30px_-5px_rgba(124,58,237,0.3)] relative flex flex-col h-full cursor-pointer md:cursor-default"
                     >
                         {/* Image Container with Hover Zoom and Overlay */}
                         <div className="relative overflow-hidden aspect-video">
